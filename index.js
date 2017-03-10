@@ -18,6 +18,17 @@ app.listen(8000, function(){
 })
 
 flock.events.on('app.install', function(event,callback){
-	console.log(event);
+	console.log('ole: ',event);
 	callback();
+});
+
+flock.events.on('client.slashCommand',function(event,callback){
+	var name = event.text;
+	if(name) {
+		console.log(name);
+		callback(null, {text:"Hack added"});
+	}
+	else {
+		callback(null, {text:"Hack failed"});
+	}
 });
