@@ -7,8 +7,10 @@ flock.appSecret = config.appSecret;
 
 var app = express();
 app.use(flock.events.tokenVerifier);
-app.post('/events',function() {
-	return 1;
+app.post('/events',flock.events.listener);
+
+app.get('*', function(req, res) {
+	res.sendfile('./index.html');
 });
 
 app.listen(8000, function(){
@@ -16,6 +18,6 @@ app.listen(8000, function(){
 })
 
 flock.events.on('app.install', function(event,callback){
-	return true;
+	console.log(event);
 	callback();
 });
