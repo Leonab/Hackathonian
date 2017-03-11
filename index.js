@@ -27,8 +27,7 @@ flock.events.on('client.slashCommand',function(event,callback){
 	if(name) {
 		console.log(name);
 		callback(null, {text:"Hack added"});
-	}
-	else {
+	} else {
 		callback(null, {text:"Hack failed"});
 	}
 });
